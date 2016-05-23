@@ -144,7 +144,9 @@ class ElasticSearch extends WireData implements Module, ConfigurableModule {
 
 		$this->curlJsonRequest('DELETE');
 
-		$pages = $this->pages->find("id!=2, id!=7, has_parent!=2, has_parent!=7, template!=admin, include=all");
+		$selector = 'id!=2, id!=7, has_parent!=2, has_parent!=7, template!=admin, include=all';
+
+		$pages = $this->pages->find("$selector");
 
 		foreach ($pages as $page) {
 
